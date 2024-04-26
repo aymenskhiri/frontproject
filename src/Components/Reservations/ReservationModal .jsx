@@ -1,10 +1,8 @@
 import React from 'react';
 import ReservationForm from './ReservationForm';
 
-
-
 const ReservationModal = ({ salleId, onClose }) => {
-  const handleReservationSubmit = () => {
+  const handleReservationSubmit = async () => {
     // Handle successful reservation (e.g., close modal)
     onClose();
   };

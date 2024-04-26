@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReservationModal from './ReservationModal '; // Relative path to ReservationModal component
-
+import ReservationModal from './ReservationModal ';
 
 const SallesReservations = () => {
   const [salles, setSalles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedSalleId, setSelectedSalleId] = useState(null);
+  const [selectedSalleId, setSelectedSalleId] = useState(null); // State to store selected salleId
 
   useEffect(() => {
     const fetchSalles = async () => {
@@ -25,11 +24,11 @@ const SallesReservations = () => {
   }, []);
 
   const handleOpenModal = (salleId) => {
-    setSelectedSalleId(salleId);
+    setSelectedSalleId(salleId); // Set the selected salleId in state
   };
 
   const handleCloseModal = () => {
-    setSelectedSalleId(null);
+    setSelectedSalleId(null); // Reset selected salleId when modal is closed
   };
 
   return (
