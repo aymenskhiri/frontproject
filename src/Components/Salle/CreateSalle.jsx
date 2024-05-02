@@ -12,15 +12,17 @@ const CreateSalle = () => {
         capacité
       });
       console.log('Salle created:', response.data);
-      // Add further logic (e.g., show success message, update UI)
+      window.location.reload(); 
     } catch (error) {
       console.error('Error creating Salle:', error);
-      // Handle error (e.g., show error message)
+     
     }
   };
 
   return (
-    <div>
+    <div className="modal-background">
+      <div className="modal-container">
+        <div className="modal-content">
       <h2>Create New Salle</h2>
       <input
         type="text"
@@ -35,6 +37,8 @@ const CreateSalle = () => {
         onChange={(e) => setCapacite(e.target.value)}
       />
       <button onClick={handleCreateSalle}>Créer</button>
+    </div>
+    </div>
     </div>
   );
 };

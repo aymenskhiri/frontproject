@@ -12,6 +12,8 @@ const Signup = () => {
     const [adresse, setAdresse] = useState('');
     const [tel, setTel] = useState('');
     const [error, setError] = useState('');
+    const [Specialite, setSpecialite] = useState('');
+    const [Matiere, setMatiere] = useState('');
 
     // post request to signup
     const submitSignup = async (event) => {
@@ -23,7 +25,9 @@ const Signup = () => {
                 nom: nom,
                 prenom: prenom,
                 adresse: adresse,
-                tel: tel
+                tel: tel,
+                Specialite : Specialite,
+                Matiere : Matiere
             });
     
             console.log(response.data); 
@@ -59,6 +63,12 @@ const Signup = () => {
         </div>
         <div className="input">
             <input type='int' placeholder='Téléphone' value={tel} onChange={(e) => setTel(e.target.value)}/>
+        </div>
+        <div className="input">
+            <input type='text' placeholder='Specialité' value={Specialite} onChange={(e) => setSpecialite(e.target.value)}/>
+        </div>
+        <div className="input">
+            <input type='text' placeholder='Matière' value={Matiere} onChange={(e) => setMatiere(e.target.value)}/>
         </div>
         </div>
         {error && <div className='error'>{error}</div>}

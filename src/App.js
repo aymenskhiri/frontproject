@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/reservation-list" element={<SallesReservations />} />
         <Route path="/reservation-modal" element={<ReservationModal />} />
         
-        <Route path="/" element={<SalleListPage />} />
+        <Route path="/SalleListPage" element={<SalleListPage />} />
       </Routes>
     </Router>
   );
