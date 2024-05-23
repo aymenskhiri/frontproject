@@ -1,0 +1,98 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 1px; /* Adjusted padding for better spacing */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Position it at the top */
+  left: 0; /* Ensure it starts from the left */
+  width: 100%; /* Make it span the full width of the viewport */
+  z-index: 1000; /* Ensure it stays above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better separation */
+  list-style-type: none;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #171616;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+}
+
+.nav-link:hover {
+  color: #ffc107;
+}
+
+.logo img {
+  width: 40px;
+  height: auto;
+  margin-left: 30px;
+}
+
+.user-info {
+  text-decoration: none;
+  color: #171616;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  margin-left: auto; /* Move to the right */
+  margin-right: 180px;
+  
+}
+
+.user-name {
+  color: #09b109; /* Green text */
+}
+
+.logout-btn {
+  color: red; /* Red text */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold; 
+}
+
+.logout-btn:hover {
+  color: red; /* Red text */
+}
+
+/* Add padding to the body to ensure content isn't hidden under the fixed navbar */
+body {
+  padding-top: 70px; /* Adjust based on the height of your navbar */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+
+  .nav-link {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .logo img {
+    width: 30px; /* Adjust logo size for smaller screens */
+    margin-left: 10px; /* Adjust margin for smaller screens */
+  }
+
+  .user-info {
+    padding: 5px; /* Adjust padding for smaller screens */
+  }
+}
+
+
+

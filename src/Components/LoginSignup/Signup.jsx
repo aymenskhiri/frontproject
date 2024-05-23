@@ -19,7 +19,7 @@ const Signup = () => {
     const submitSignup = async (event) => {
         event.preventDefault(); 
         try {
-            const response = await axios.post('https://localhost:7247/api/User/add-user', {
+            const response = await axios.post('https://localhost:7258/api/User/add-user', {
                 email: email,
                 password: password,
                 nom: nom,
@@ -32,7 +32,7 @@ const Signup = () => {
     
             console.log(response.data); 
         } catch (error) {
-            console.error('Error occurred:', error.response.data); 
+            console.error(error); 
         }
     };
 

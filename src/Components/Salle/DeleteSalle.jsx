@@ -4,7 +4,7 @@ import axios from 'axios';
 const DeleteSalle = ({ salleId }) => {
   const handleDeleteSalle = async () => {
     try {
-      const response = await axios.delete(`https://localhost:7247/api/Salle/${salleId}`);
+      const response = await axios.delete(`https://localhost:7258/api/Salle/${salleId}`);
       console.log('Salle deleted:', response.data);
       // Add further logic (e.g., show success message, update UI)
     } catch (error) {
@@ -16,7 +16,7 @@ const DeleteSalle = ({ salleId }) => {
   return (
     <div>
       
-      <button onClick={handleDeleteSalle}>Supprimer</button>
+      <button className ='supp' onClick={handleDeleteSalle}>Supprimer</button>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const SalleListPage = () => {
 
   const fetchSalles = async () => {
     try {
-      const response = await axios.get('https://localhost:7247/api/Salle');
+      const response = await axios.get('https://localhost:7258/api/Salle');
       setSalles(response.data);
     } catch (error) {
       console.error('Error fetching Salles:', error);
@@ -39,44 +39,48 @@ const SalleListPage = () => {
   const handleCloseModal = () => {
     setSelectedSalle(null);
   };
+
   const handleCreateFormToggle = () => {
     setShowCreateForm(!showCreateForm); 
   };
 
   return (
-    <div className="salle-list-container">
-            <button onClick={handleCreateFormToggle}>Créer une salle</button>
-            {showCreateForm && <CreateSalle onCreateSuccess={fetchSalles} onClose={handleCreateFormToggle} />}
-      <h1>Liste des Salles</h1>
-      <table className="salle-table">
-        <thead>
-          <tr>
-            <th>Numéro de Salle</th>
-            <th>Capacité</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {salles.map((salle) => (
-            <tr key={salle.id}>
-              <td>{salle.numSalle}</td>
-              <td>{salle.capacité}</td>
-              <td>
-                <button onClick={() => handleUpdateClick(salle)}>Modifier</button>
-                <DeleteSalle salleId={salle.id} onDeleteSuccess={handleDeleteSuccess} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {selectedSalle && (
-        <UpdateSalle
-          salle={selectedSalle}
-          onUpdateSuccess={handleUpdateSuccess}
-          onClose={handleCloseModal}
-        />
-      )}
+    <div className="salle-list-page">
+      <div className="salle-list-container">
+        <h1 className="salle-title">Liste des Salles</h1>
+        <div className="button-table-container">
+          <button className="create-button" onClick={handleCreateFormToggle}>Créer une salle</button>
+          {showCreateForm && <CreateSalle onCreateSuccess={fetchSalles} onClose={handleCreateFormToggle} />}
+          <table className="salle-table">
+            <thead>
+              <tr>
+                <th>Numéro de Salle</th>
+                <th>Capacité</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {salles.map((salle) => (
+                <tr key={salle.id}>
+                  <td>{salle.numSalle}</td>
+                  <td>{salle.capacité}</td>
+                  <td>
+                    <button className='mod' onClick={() => handleUpdateClick(salle)}>Modifier</button>
+                    <DeleteSalle salleId={salle.id} onDeleteSuccess={handleDeleteSuccess} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {selectedSalle && (
+          <UpdateSalle
+            salle={selectedSalle}
+            onUpdateSuccess={handleUpdateSuccess}
+            onClose={handleCloseModal}
+          />
+        )}
+      </div>
     </div>
   );
 };

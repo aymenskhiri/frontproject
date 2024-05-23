@@ -1,75 +1,235 @@
+/* Salle list page */
+.salle-list-page {
+  padding-top: 70px; /* Adjust based on the height of your navbar */
+}
 
-.modal-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+/* Salle list container */
+.salle-list-container {
+  padding: 20px;
+}
+
+/* Center the title */
+.salle-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Container for button and table */
+.button-table-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Create button */
+.create-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-right: 60px;
+  margin-top: 80px;
+}
+
+.create-button:hover {
+  background-color: #0056b3;
+}
+
+/* Salle table */
+.salle-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #eefcff;
+}
+
+.salle-table th,
+.salle-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.salle-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Supp button */
+.supp {
+  background-color: #e24242;
+  min-width: 120px;
+}
+
+.supp:hover {
+  background-color: #aa1e1e;
+}
+
+/* Mod button */
+.mod {
+  min-width: 120px;
+  background-color: #42eb7a;
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
   .modal-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 90%;
+    padding: 15px;
   }
-  
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .modal-content label {
-    margin-bottom: 10px;
-  }
-  
-  .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .modal-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .modal-buttons button:hover {
-    background-color: #f0f0f0;
-  }
-  
 
-  .salle-list-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  .modal-content h2 {
+    font-size: 20px;
   }
-  
-  .salle-table {
-    width: 80%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .salle-table th,
-  .salle-table td {
+
+  .modal-button {
     padding: 10px;
-    border: 1px solid #ddd;
+    font-size: 14px;
   }
-  
-  .salle-table th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    text-align: left;
+
+  .salle-table th, .salle-table td {
+    padding: 8px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    width: 95%;
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  .modal-content h2 {
+    font-size: 18px;
+  }
+
+  .modal-button {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .salle-table th, .salle-table td {
+    padding: 6px;
+  }
+}
+
+
+
+
+
+
+/* UpdateSalle.css */
+.update-salle-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-salle-modal-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.update-salle-modal-content {
+  text-align: center;
+}
+
+.update-salle-input-container {
+  margin-bottom: 20px;
+}
+
+.update-salle-modal-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+}
+
+.update-salle-modal-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.update-salle-modal-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.update-salle-modal-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+/* CreateSalle.css */
+.create-salle-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-salle-modal-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-salle-modal-content {
+  text-align: center;
+}
+
+.create-salle-modal-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+}
+
+.create-salle-modal-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.create-salle-modal-button:hover {
+  background-color: #0056b3;
+}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReservationModal from './ReservationModal ';
+import '../Reservations/Reservations.css'
+
 
 const SallesReservations = () => {
   const [salles, setSalles] = useState([]);
@@ -11,7 +13,7 @@ const SallesReservations = () => {
   useEffect(() => {
     const fetchSalles = async () => {
       try {
-        const response = await axios.get('https://localhost:7247/api/Reservations/Salles');
+        const response = await axios.get('https://localhost:7258/api/Reservations/Salles');
         setSalles(response.data);
         setLoading(false);
       } catch (error) {
@@ -33,29 +35,29 @@ const SallesReservations = () => {
 
   return (
     <div>
-      <h2>List of Available Salles</h2>
+     <div className="titresalle"> 
+    <h2>Liste des Salles</h2>
+    </div>
+    <div className="list-container">
       {loading ? (
-        <p>Loading salles...</p>
+        <p>Chargement des Salles...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <ul>
-          {salles.map((salle) => (
-            <li key={salle.id}>
-              {salle.numSalle} - Capacity: {salle.capacité}
-              <button onClick={() => handleOpenModal(salle.id)}>Reserve</button>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {selectedSalleId && (
-        <ReservationModal
-          salleId={selectedSalleId}
-          onClose={handleCloseModal}
-        />
+        salles.map((salle) => (
+          <div key={salle.id} className="salle-frame">
+            <p>Salle  {salle.numSalle} <br>
+            </br>- Capacité : {salle.capacité}</p>
+            <button onClick={() => handleOpenModal(salle.id)}>Réserver</button>
+          </div>
+        ))
       )}
     </div>
+
+    {selectedSalleId && (
+      <ReservationModal salleId={selectedSalleId} onClose={handleCloseModal} />
+    )}
+  </div>
   );
 };
 

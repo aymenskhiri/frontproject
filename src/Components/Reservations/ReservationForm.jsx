@@ -1,54 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../Reservations/Reservations.css';
 
 const ReservationForm = ({ salleId, onSubmitSuccess }) => {
   const [dateRes, setDateRes] = useState('');
   const [heureDebut, setHeureDebut] = useState('');
   const [heureFin, setHeureFin] = useState('');
   const [error, setError] = useState('');
+  const [idProf, setIdProf] = useState(null);
 
-  const handleReservationSubmit = async (e) => {
-    e.preventDefault();
-  
-    if (!dateRes || !heureDebut || !heureFin || !salleId) {
-      setError('Please fill out all fields.');
-      return;
+  useEffect(() => {
+    const storedIdProf = localStorage.getItem('Id_Prof');
+    if (!storedIdProf) {
+      setError('Id_Prof not found. Please log in again.');
+    } else {
+      console.log(`Retrieved idProf from localStorage: ${storedIdProf}`);
+      setIdProf(parseInt(storedIdProf));
     }
+  }, []);
+
+  const handleReservationSubmit = async (event) => {
+    event.preventDefault();
   
     const reservationData = {
-      dateRes,
-      heureDebut,
-      heureFin,
-      id_Salle: salleId, // Ensure salleId is provided
+      dateRes: dateRes,
+      heureDebut: heureDebut,
+      heureFin: heureFin,
+      idSalle: salleId,
+      idProf: localStorage.getItem('Id_Prof')
     };
   
+    console.log("Sending reservation data:", reservationData); 
+  
     try {
-      const response = await axios.post('https://localhost:7247/api/Reservations', reservationData);
-  
-      console.log('Reservation created:', response.data);
-  
-      // Reset form fields after successful reservation
-      setDateRes('');
-      setHeureDebut('');
-      setHeureFin('');
-      setError('');
+      const response = await axios.post('https://localhost:7258/api/Reservations', reservationData);
+      console.log('Reservation created successfully:', response.data);
     } catch (error) {
       console.error('Error creating reservation:', error);
-  
-      if (error.response) {
-        setError(`Error: ${error.response.data}`);
-      } else if (error.request) {
-        setError('Network error. Please try again.');
-      } else {
-        setError('Failed to create reservation. Please try again.');
-      }
     }
   };
   
 
   return (
     <div>
-      <h2>Make a Reservation</h2>
+      <div className='t'>
+        <h2>Créer une réservation</h2>
+      </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleReservationSubmit}>
         <label>
@@ -61,7 +58,7 @@ const ReservationForm = ({ salleId, onSubmitSuccess }) => {
         </label>
         <br />
         <label>
-          Start Time:
+          Début de réservation :
           <input
             type="time"
             value={heureDebut}
@@ -70,7 +67,7 @@ const ReservationForm = ({ salleId, onSubmitSuccess }) => {
         </label>
         <br />
         <label>
-          End Time:
+          Fin de reservation :
           <input
             type="time"
             value={heureFin}
@@ -78,8 +75,9 @@ const ReservationForm = ({ salleId, onSubmitSuccess }) => {
           />
         </label>
         <br />
-        {/* No input field for salleId here, using prop value directly */}
-        <button type="submit">Reserve</button>
+        <div className="submit-res">
+          <button type="submit">Réserver</button>
+        </div>
       </form>
     </div>
   );

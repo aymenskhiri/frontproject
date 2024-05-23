@@ -1,0 +1,36 @@
+.footer {
+  background-color: #c4bcbc;
+  padding: 10px 20px; /* Increased padding for better touch interaction */
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Added shadow for better separation from content */
+}
+
+.text {
+  font-size: 14px;
+  color: #333;
+  margin: 0; /* Ensure no extra margins */
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 8px 15px; /* Slightly smaller padding for tablets */
+  }
+
+  .text {
+    font-size: 13px; /* Slightly smaller font size for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 6px 10px; /* Even smaller padding for mobile devices */
+  }
+
+  .text {
+    font-size: 12px; /* Smaller font size for mobile devices */
+  }
+}
